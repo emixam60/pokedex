@@ -16,7 +16,7 @@ const PokemonPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen px-2 pt-2">
       <div className="flex justify-between w-full">
         <Button variant="outline" size="icon" onClick={() => router.back()}>
           <ChevronLeftIcon className="h-4 w-4" />

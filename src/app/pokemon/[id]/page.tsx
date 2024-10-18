@@ -126,93 +126,104 @@ const PokemonDetail: React.FC = () => {
 
   return (
     <>
-      <div className="">
-        <div className="flex justify-between w-full pb-2">
-                <Button variant="outline" size="icon" onClick={() => router.back()}>
+    <div className="bg-[url('/image/sacha2.png')] bg-cover ">
+      {/* Barre supérieure avec les boutons */}
+      <div className="flex justify-between w-full gap-2 p-2">
+        <Button variant="outline" size="icon" onClick={() => router.back()}>
           <ChevronLeftIcon className="h-4 w-4" />
         </Button>
         <ModeToggle />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-          {/* Utilisation de grid responsive */}
-          <div className="relative flex justify-center">
-            {/* Flex pour centrer horizontalement */}
+      </div>
+  
+      {/* Contenu principal */}
+      <div className="flex justify-start w-full h-full p-4">
+        {/* Div gauche */}
+        <div className="">
+          {/* Div pour l'image et le nom du Pokémon */}
+          <div className=" rounded-lg shadow-lg p-2 w-80 h-60 flex flex-col m-auto items-center justify-center border-2 border-[#fc6969] bg-white dark:bg-black">
             <img
-              src="/image/Pokedex1.png"
-              alt="Pokedex"
-              className="w-72 bg-white"
+              className="w-40 h-auto transition-all duration-300"
+              src={pokemon.sprites.other["official-artwork"].front_default}
+              alt={pokemon.name}
             />
-            {/* Conteneur pour le Pokémon et le titre, positionné à l'intérieur de l'écran */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              {/* Utiliser inset pour remplir le conteneur */}
-              <img
-                className="w-40 h-auto mb-2 mt-[-40px] transition-all duration-300" // Remonte l'image
-                src={pokemon.sprites.other["official-artwork"].front_default}
-                alt={pokemon.name}
-              />
-              <h1 className="text-2xl font-bold text-[#295aff] text-center capitalize mt-[-10px]">
-                {" "}
-                {/* Remonte le titre */}
-                {pokemon.name}
-              </h1>
-            </div>
+            <h1 className="text-2xl font-bold text-[#fc6969] text-center capitalize mt-2">
+              {pokemon.name.toUpperCase()}
+            </h1>
           </div>
-          {/* ------------------------------------------------------------------------------- */}
-          <div className="flex flex-col items-center gap-10 pt-10 px-4">
-            {/* Centrer le contenu */}
+  
+          {/* Div pour le reste des informations */}
+          <div className="flex flex-col items-center gap-10 mt-8 ">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl">
-              {/* Ajuster le gap et la largeur */}
               {/* Carte pour Types */}
-              <div className="bg-green-200 shadow-2xl border-l-2 border-[#ff2525] rounded-lg hover:scale-105 transition-transform duration-300">
-                <h2 className="text-xl font-semibold text-[#295aff] p-2 text-center underline decoration-red-700">
+              <div className="bg-white dark:bg-black shadow-2xl rounded-lg hover:scale-105 transition-transform duration-300 border-2 border-[#fc6969]">
+                <h2 className="text-xl font-semibold text-[#fc6969] p-2 text-center underline decoration-black dark:decoration-white">
                   Types
                 </h2>
-                <div className="pl-4">
-                <p className="text-[#295aff]">{pokemon.types.join(", ")}</p>
-                <p className="text-xl font-semibold text-[#295aff] p-2 text-center underline decoration-red-700">mesures</p>
-                <p className="mt-2 text-[#295aff]">
-                  Taille: {heightInCm} cm
-                </p>
-                <p className="text-[#295aff]">Poids: {weightInKg} kg</p>
+                <div className="pl-4 pb-4 sm:text-center md:text-center lg:text-left ">
+                  <p className="text-black dark:text-white">
+                    {pokemon.types.join(", ")}
+                  </p>
+                  <p className="text-xl font-semibold underline decoration-black dark:decoration-white text-[#fc6969] p-2 text-center ">
+                    Mesures
+                  </p>
+                  <p className="mt-2 text-black dark:text-white ">
+                    Taille: {heightInCm} cm
+                  </p>
+                  <p className="text-black dark:text-white">
+                    Poids: {weightInKg} kg
+                  </p>
                 </div>
               </div>
+  
               {/* Carte pour Statistiques */}
-              <div className="bg-pink-200 border-t-2 border-[#ff2525] shadow-2xl rounded-lg hover:scale-105 transition-transform duration-300">
-                <h2 className="text-xl font-semibold text-[#295aff] p-2 text-center underline decoration-red-700">
-                  Statistiques
+              <div className="bg-white dark:bg-black shadow-2xl rounded-lg hover:scale-105 transition-transform duration-300 border-2 border-[#fc6969]">
+                <h2 className="text-xl font-semibold text-[#fc6969] p-2 text-center underline decoration-black dark:decoration-white">
+                  Stats
                 </h2>
                 <ul className="flex flex-col p-4">
                   {pokemon.stats.map((stat: any) => (
-                    <li key={stat.stat.name} className="text-[#295aff]">
+                    <li
+                      key={stat.stat.name}
+                      className="text-black dark:text-white"
+                    >
                       {statTranslations[stat.stat.name] || stat.stat.name}:{" "}
                       {stat.base_stat}
                     </li>
                   ))}
                 </ul>
               </div>
+  
               {/* Carte pour Capacités */}
-              <div className="bg-amber-200 border-r-2 border-[#ff2525] shadow-2xl rounded-lg hover:scale-105 transition-transform duration-300">
-                <h2 className="text-xl font-semibold text-[#295aff] p-2 text-center underline decoration-red-700">
+              <div className="bg-white dark:bg-black shadow-2xl rounded-lg hover:scale-105 transition-transform duration-300 border-2 border-[#fc6969] ">
+                <h2 className="text-xl font-semibold text-[#fc6969] p-2 text-center underline decoration-black dark:decoration-white">
                   Capacités
                 </h2>
-                <p className="text-[#295aff] p-4">
+                <p className="text-black dark:text-white p-4 text-pretty">
                   {pokemon.abilities.join(", ")}
                 </p>
-                <Link href="https://fr.linkedin.com/in/maxime-guilloy-780178315?trk=people-guest_people_search-card"><img src="/image/pokeball.png" alt="pokeball" className="w-24 h-auto m-auto pt-4"/></Link>
+                <Link href="https://fr.linkedin.com/in/maxime-guilloy-780178315?trk=people-guest_people_search-card">
+                  <img
+                    src="/image/pokeball.png"
+                    alt="pokeball"
+                    className="w-24 h-auto m-auto pt-2 opacity-70"
+                  />
+                </Link>
               </div>
             </div>
+  
             {/* Carte pour Description */}
-            <div className="bg-[#b8e085] border-b-2 border-[#ff2525] shadow-2xl rounded-lg mt-8 p-4 w-full max-w-4xl">
-              {/* Largeur maximale pour centrer */}
-              <h2 className="text-xl font-semibold text-[#295aff] text-center underline decoration-red-700">
+            <div className="bg-white dark:bg-black shadow-2xl rounded-lg pb-4 px-2 w-fit max-w-4xl border-2 border-[#fc6969]">
+              <h2 className="text-xl font-semibold text-[#fc6969] text-center underline decoration-black dark:decoration-white p-2">
                 Description
               </h2>
-              <p className="text-[#295aff]">{description}</p>
+              <p className="text-black dark:text-white text-pretty">{description}</p>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
+  </>
+  
   );
 };
 export default PokemonDetail;

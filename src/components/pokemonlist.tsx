@@ -12,7 +12,7 @@ import Link from "next/link";
 import { fetchTranslations } from "./utils/fetch-translations";
 
 const typeTranslationMap: Record<string, string> = {
-  électrique: "electric",
+  électrik: "electric",
   plante: "grass",
   feu: "fire",
   eau: "water",
@@ -32,7 +32,6 @@ const typeTranslationMap: Record<string, string> = {
   ténèbres: "dark",
 };
 
-
 const pastelTypeColors: Record<string, string> = {
   electric: "bg-yellow-200",
   grass: "bg-green-200",
@@ -46,7 +45,7 @@ const pastelTypeColors: Record<string, string> = {
   flying: "bg-blue-300",
   psychic: "bg-pink-300",
   rock: "bg-gray-400",
-  ground: "bg-amber-200",
+  ground: "bg-amber-100",
   steel: "bg-gray-500",
   ghost: "bg-indigo-200",
   ice: "bg-blue-100",
@@ -151,16 +150,24 @@ const PokemonList: React.FC = () => {
     <div className="">
       <div className="flex flex-col items-center mb-4">
         <div className="flex justify-between">
-      <img src="/image/pokeball.png" alt="pokeball" className="w-24 h-auto m-auto pt-6"/>
-        <img
-          src="/image/pokemonlogo.png"
-          alt="logo-pokemon"
-          className="w-1/2 mb-2"
-        />
-        <img src="/image/pokeball.png" alt="pokeball" className="w-24 h-auto m-auto pt-6"/>
+          <img
+            src="/image/pokeball.png"
+            alt="pokeball"
+            className="w-24 h-auto m-auto pt-6 max-[425px]:w-12"
+          />
+          <img
+            src="/image/pokemonlogo.png"
+            alt="logo-pokemon"
+            className="w-1/2 mb-2"
+          />
+          <img
+            src="/image/pokeball.png"
+            alt="pokeball"
+            className="w-24 h-auto m-auto pt-6 max-[425px]:w-12"
+          />
         </div>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center gap-2 pb-2">
         <Input
           type="text"
           placeholder="Cherchez un Pokémon..."
@@ -184,8 +191,7 @@ const PokemonList: React.FC = () => {
                 key={type}
                 onClick={() => setSelectedType(type)}
               >
-                {
-                  type.charAt(0).toUpperCase() + type.slice(1)}
+                {type && type.charAt(0).toUpperCase() + type.slice(1)}
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
@@ -221,15 +227,17 @@ const PokemonList: React.FC = () => {
               name={pokemon.name}
               image={pokemon.image}
               types={pokemon.types.map(
-                (type: string) =>
-                  type.charAt(0).toUpperCase() + type.slice(1)
+                (type: string) => type.charAt(0).toUpperCase() + type.slice(1)
               )}
               className="h-fit w-auto"
               cardColor={
-                pokemon.types[0] 
-                  ? pastelTypeColors[typeTranslationMap[pokemon.types[0].toLowerCase()]] 
-                  : "bg-gray-300"  // Couleur par défaut si aucun type
-              }            />
+                pokemon.types[0]
+                  ? pastelTypeColors[
+                      typeTranslationMap[pokemon.types[0].toLowerCase()]
+                    ]
+                  : "bg-gray-300" // Couleur par défaut si aucun type
+              }
+            />
           </Link>
         ))}
       </div>
