@@ -43,8 +43,8 @@ const PokemonPage: React.FC = () => {
          bg-black bg-opacity-40 border border-white dark:text-black rounded p-4 ">
      <p>Ce projet POKEDEX est un exercice de développement web sur lequel je travaille pour améliorer mes compétences.
            J'apprends à utiliser <a href="https://reactjs.org/" className="text-blue-300 hover:underline">React</a> et 
-           <a href="https://tailwindcss.com/" className="text-blue-300 hover:underline">Tailwind CSS</a> avec une <a href="https://pokeapi.co/"
-           className="text-blue-300 hover:underline">PokeAPI</a> externe pour explorer les fonctionnalités et la présentation du Pokédex.
+           <a href="https://tailwindcss.com/" className="text-blue-300 hover:underline">Tailwind CSS</a> avec une API externe <a href="https://pokeapi.co/"
+           className="text-blue-300 hover:underline">PokeAPI</a> pour explorer les fonctionnalités et la présentation du Pokédex.
      </p>
   </div>
 

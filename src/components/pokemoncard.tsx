@@ -1,4 +1,3 @@
-
 import React from "react";
 
 interface PokemonCardProps {
@@ -14,7 +13,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ name, image, types, className
   console.log(types, cardColor);
   return (
     <div
-      className={`p-4 rounded-lg shadow-md flex flex-col items-center justify-center ${cardColor} ${className}`}
+      className={`transform transition-transform hover:scale-110 p-4 rounded-lg shadow-md flex flex-col items-center justify-center ${cardColor} ${className}`}
     >
       <img src={image} alt={name} className="w-24 h-24 mb-2" />
       <h2 className="text-lg font-semibold dark:text-black">{name.charAt(0).toUpperCase() + name.slice(1)}</h2>

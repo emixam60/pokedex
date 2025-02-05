@@ -136,11 +136,11 @@ const PokemonDetail: React.FC = () => {
       </div>
   
       {/* Contenu principal */}
-      <div className="flex justify-start w-full h-full p-4">
+      <div className="flex justify-start w-full h-full p-4 ">
         {/* Div gauche */}
         <div className="">
           {/* Div pour l'image et le nom du Pokémon */}
-          <div className=" rounded-lg shadow-lg p-2 w-80 h-60 flex flex-col m-auto items-center justify-center border-2 border-[#fc6969] bg-white dark:bg-black">
+          <div className=" rounded-lg shadow-lg p-2 w-80 h-60 flex flex-col m-auto items-center justify-center  border-2 border-[#fc6969] bg-white dark:bg-black ">
             <img
               className="w-40 h-auto transition-all duration-300"
               src={pokemon.sprites.other["official-artwork"].front_default}

@@ -6,7 +6,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import PokemonCard from "./card";
+import PokemonCard from "./pokemoncard";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { fetchTranslations } from "./utils/fetch-translations";
@@ -218,7 +218,7 @@ const PokemonList: React.FC = () => {
           Suivant
         </button>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 ">
         {filteredPokemons.map((pokemon) => (
           <Link href={`/pokemon/${pokemon.id}`}>
             <PokemonCard
